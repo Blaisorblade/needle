@@ -38,32 +38,32 @@ Ltac needleGenericWeakenAppend :=
   let k1 := fresh in
   let k2 := fresh in
     intros x k1 k2; revert k1 x;
-    induction k2 as [| () k2]; intros; simpl;
+    induction k2 as [| [] k2]; intros; simpl;
     auto; f_equal; auto.
 
 Ltac needleGenericShiftIndexCommInd :=
   let k := fresh in
-  intro k; induction k as [| () k];
+  intro k; induction k as [| [] k];
     let x := fresh in
     intros ? x; simpl; auto;
     destruct x; simpl; f_equal; auto.
 
 Ltac needleGenericWeakenShift :=
   let k := fresh in
-    intro k; induction k as [| () k]; intros; simpl;
+    intro k; induction k as [| [] k]; intros; simpl;
     autorewrite with shift_shift0;
     auto with cong_shift0.
 
 Ltac needleGenericSubstIndexShiftIndexReflectionInd :=
   let k := fresh in
-  simpl; intros k; induction k as [| () k];
+  simpl; intros k; induction k as [| [] k];
    (let x := fresh in
     intros x; simpl; auto; (first
      [ rewriteHyp; auto | destruct x; simpl; auto; rewriteHyp; auto ])).
 
 Ltac needleGenericShiftSubstIndexCommInd :=
   let k := fresh in
-    intro k; induction k as [| () k];
+    intro k; induction k as [| [] k];
     let x := fresh in
       intros x; simpl; auto; destruct x; simpl;
       autorewrite with shift_shift0;
@@ -71,7 +71,7 @@ Ltac needleGenericShiftSubstIndexCommInd :=
 
 Ltac needleGenericSubstSubstIndexCommInd :=
   let k := fresh in
-    intro k; induction k as [| () k];
+    intro k; induction k as [| [] k];
     let x := fresh in
       intros x; simpl; auto; destruct x; simpl;
       autorewrite with reflection subst_shift0;
@@ -79,7 +79,7 @@ Ltac needleGenericSubstSubstIndexCommInd :=
 
 Ltac needleGenericWeakenSubst :=
   let k := fresh in
-    intro k; induction k as [| () k]; intros; simpl;
+    intro k; induction k as [| [] k]; intros; simpl;
     autorewrite with subst_shift0;
     auto with cong_shift0.
 
@@ -187,7 +187,7 @@ Ltac needleGenericSubstHvlWfIndexHet :=
 
 Ltac needleGenericWeakenSize :=
   let k := fresh in
-    intro k; induction k as [| () k]; simpl; intros;
+    intro k; induction k as [| [] k]; simpl; intros;
     autorewrite with shift_size; auto.
 
 Ltac needleGenericWeakenLookup :=

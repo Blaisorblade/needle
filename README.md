@@ -9,9 +9,8 @@ http://users.ugent.be/~skeuchel/knot
 
 ## Requirements
 
-- GHC 7.8 or above
+- GHC >= 7.8 <= 8.2
 - Coq 8.4 or Coq 8.5 (partial support for Coq 8.6-8.8, see https://github.com/skeuchel/needle/pull/5)
-
 
 ## Installation
 
